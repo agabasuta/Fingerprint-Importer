@@ -76,6 +76,7 @@ Buat Cron Job
 ```
 crontab -e
 ```
+Tambahkan Script ini untuk penarikkan data automatis per 8 jam (00:00, 08:00, 16:00)
 ```
 0 */8 * * * /home/user/Fingerprint-Importer/venv/bin/python /home/user/Fingerprint-Importer/fingerprint_sync.py >> /home/user/Fingerprint-Importer/fingerprint_sync.log 2>&1
 ```
