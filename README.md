@@ -74,6 +74,9 @@ sudo systemctl restart apache2
 ```
 Buat Cron Job
 ```
+crontab -e
+```
+```
 0 */8 * * * /home/user/Fingerprint-Importer/venv/bin/python /home/user/Fingerprint-Importer/fingerprint_sync.py >> /home/user/Fingerprint-Importer/fingerprint_sync.log 2>&1
 ```
 
