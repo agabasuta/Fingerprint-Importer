@@ -26,25 +26,17 @@ Instalasi web server Apache, database MySQL, dan PHP
 sudo apt install apache2 mysql-server php apache2-mod-php php-mysql -y
 ```
 
-masuk mysql untuk buat tabel dan isi kolom pada database menggunakan tabel yang ada di schema.sql
+masuk mysql untuk buat tabel dan isi kolom pada database
+```
+sudo mysql -u root -p
+```
 ```
 CREATE DATABASE attendance_db;
 ```
 ```
-CREATE TABLE attendance_logs (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	departemen VARCHAR(100),
-	nama VARCHAR(100),
-	no_id VARCHAR(50),
-	tgl_waktu DATETIME,
-	status ENUM('Masuk', 'Keluar') NULL,
-	lokasi_id VARCHAR(50),
-	no_pin VARCHAR(50),
-	kode_kerja VARCHAR(50),
-	kode_verifikasi VARCHAR(50),
-	no_kartu VARCHAR(50),
-	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+USE attendance_db;
+
+SOURCE schema.sql;
 ```
 
 Buat environment dan install python
@@ -82,7 +74,7 @@ sudo systemctl restart apache2
 ```
 Buat Cron Job
 ```
-0 */8 * * * /home/user/Fingerprint-Importer/venv/bin/python /home/user/Fingerprint-Importer/fingerprint_sync.py >> /home/user/Fingerprint_Importer/fingerprint_sync.log 2>&1
+0 */8 * * * /home/user/Fingerprint-Importer/venv/bin/python /home/user/Fingerprint-Importer/fingerprint_sync.py >> /home/user/Fingerprint-Importer/fingerprint_sync.log 2>&1
 ```
 
 ## Testing
@@ -97,7 +89,7 @@ python fingerprint_sync.py
 
 ### Liat log pada crontab
 ```
-cd Fingerprint_Importer
+cd Fingerprint-Importer
 cat fingerprint_sync.log
 ```
 
