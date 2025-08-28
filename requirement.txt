@@ -1,0 +1,2 @@
+pyzk
+mysql-connector-python
