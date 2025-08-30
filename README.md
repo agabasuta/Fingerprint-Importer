@@ -23,15 +23,20 @@ cd Fingerprint-Importer
 ```
 Instalasi web server Apache, database MySQL, dan PHP
 ```
-sudo apt install apache2 mysql-server php apache2-mod-php php-mysql -y
+sudo apt install apache2 mysql-server php libapache2-mod-php php-mysql -y
 ```
 
-masuk mysql untuk buat tabel dan isi kolom pada database
+masuk mysql untuk buat user, tabel dan isi kolom pada database
 ```
 sudo mysql -u root -p
 ```
 ```
 CREATE DATABASE attendance_db;
+```
+```
+CREATE USER 'fingerprint_user'@'localhost' IDENTIFIED BY 'your_password';
+GRANT ALL PRIVILEGES ON attendance_db.* TO 'fingerprint_user'@'localhost';
+FLUSH PRIVILEGES;
 ```
 ```
 USE attendance_db;
@@ -55,7 +60,10 @@ pip install -r requirements.txt
 ```
 Pindahkan file php untuk webserver
 ```
-sudo mv ~/Fingerprint-Importer/index.php /var/www/html/
+sudo mkdir -p /var/www/html/Dashboard
+```
+```
+sudo mv ~/Fingerprint-Importer/index.php /var/www/html/Dashboard
 ```
 
 Konfigurasi apache
@@ -100,5 +108,5 @@ cat fingerprint_sync.log
 ### Melihat output di webserver
 Masuk browser dan masukkan
 ```
-localhost
+http://localhost/Dashboard
 ```
