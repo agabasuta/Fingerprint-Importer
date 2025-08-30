@@ -108,5 +108,5 @@ cat fingerprint_sync.log
 ### Melihat output di webserver
 Masuk browser dan masukkan
 ```
-http://localhost/Dashboard
+http://localhost/Dashboard/
 ```
