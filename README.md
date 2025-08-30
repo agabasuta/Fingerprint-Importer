@@ -76,6 +76,12 @@ Pindahkan index.php ke posisi pertama setelah DirectoryIndex
 DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
 ```
 
+Atur Permission agar bisa dibaca apache
+```
+sudo chown -R www-data:www-data /var/www/html/Dashboard
+sudo chmod -R 755 /var/www/html/Dashboard
+```
+
 Restart Apache
 ```
 sudo systemctl restart apache2
